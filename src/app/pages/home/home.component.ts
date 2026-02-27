@@ -33,6 +33,9 @@ import {
 export class HomeComponent {
   readonly themeService = inject(ThemeService);
 
+  /** Grid columns - using literal type to match ResponsiveGridComponent input */
+  readonly gridColumns = 3 as const;
+
   /** Zoom-aware breakpoints reference (from attached specification) */
   breakpoints = [
     { zoom: '100%',  width: '1280px', tw: '6xl', layout: 'Base Desktop' },

@@ -28,7 +28,7 @@
               }
             ],
             "styles": [
-              "../igot-design-system/src/lib/styles/_index.scss",
+              "../../packages/igot-packages/igot-design-system/src/lib/styles/_index.scss",
               "src/styles.scss"
             ],
             "scripts": []

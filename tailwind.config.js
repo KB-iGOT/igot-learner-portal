@@ -3,7 +3,8 @@ module.exports = {
   darkMode: 'class',
   content: [
     './src/**/*.{html,ts,scss}',
-    '../igot-design-system/**/*.{html,ts,scss}',
+    './node_modules/@igot/design-system/**/*.{html,js}',
+    './node_modules/@igot/ui-components/**/*.{html,js}',
   ],
   theme: {
     // ── Breakpoints (from igot_design_data_knowledge/Screen_Size) ───
