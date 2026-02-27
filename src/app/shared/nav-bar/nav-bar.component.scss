@@ -1,0 +1,251 @@
+$nav-bg:     #1c0a3a;   // deep purple — matches iGOT brand
+$nav-border: rgba(255, 255, 255, 0.08);
+$nav-text:   rgba(255, 255, 255, 0.75);
+$nav-active: #fff;
+$accent:     #f5a623;   // iGOT gold accent
+
+.igot-nav {
+  position: sticky;
+  top: 0;
+  z-index: 1030;
+  background: $nav-bg;
+  border-bottom: 1px solid $nav-border;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+}
+
+.igot-nav__inner {
+  max-width: var(--container-max-width, 1280px);
+  margin: 0 auto;
+  padding: 0 16px;
+  height: var(--header-height, 64px);
+  display: flex;
+  align-items: center;
+  gap: 24px;
+
+  @media (min-width: 768px) {
+    padding: 0 24px;
+    gap: 32px;
+  }
+}
+
+// ── Hamburger (mobile only) ─────────────────────────────
+.igot-nav__hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: $nav-text;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--border-focus, $accent);
+    outline-offset: 2px;
+  }
+
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+// ── Logo ────────────────────────────────────────────────
+.igot-nav__logo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  flex-shrink: 0;
+  color: $nav-active;
+
+  &:focus-visible {
+    outline: 2px solid var(--border-focus, $accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  &-icon {
+    font-size: 22px;
+  }
+
+  &-text {
+    font-size: 15px;
+    font-weight: 400;
+    color: rgba(255, 255, 255, 0.85);
+    white-space: nowrap;
+
+    strong {
+      font-weight: 700;
+      color: #fff;
+    }
+
+    // Hide text on very small screens
+    @media (max-width: 425px) {
+      display: none;
+    }
+  }
+}
+
+// ── Nav Links ────────────────────────────────────────────
+.igot-nav__links {
+  display: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex: 1;
+
+  // Desktop: horizontal
+  @media (min-width: 768px) {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  // Mobile: vertical dropdown
+  &--open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: var(--header-height, 64px);
+    left: 0;
+    right: 0;
+    background: $nav-bg;
+    border-bottom: 1px solid $nav-border;
+    padding: 8px 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    z-index: 1020;
+
+    @media (min-width: 768px) {
+      position: static;
+      flex-direction: row;
+      border-bottom: none;
+      padding: 0;
+      box-shadow: none;
+    }
+  }
+}
+
+.igot-nav__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: $nav-text;
+  text-decoration: none;
+  transition: background 0.15s, color 0.15s;
+
+  @media (min-width: 768px) {
+    padding: 6px 14px;
+    font-size: 13.5px;
+  }
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: $nav-active;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--border-focus, $accent);
+    outline-offset: -2px;
+    border-radius: 6px;
+  }
+
+  &--active {
+    background: rgba(255, 255, 255, 0.12);
+    color: $nav-active;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 14px;
+      right: 14px;
+      height: 2px;
+      background: $accent;
+      border-radius: 2px 2px 0 0;
+    }
+  }
+}
+
+.igot-nav__link-icon {
+  font-size: 18px;
+  width: 18px;
+  height: 18px;
+
+  // Hide icons on desktop nav
+  @media (min-width: 768px) {
+    display: none;
+  }
+}
+
+// ── Right side ───────────────────────────────────────────
+.igot-nav__right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @media (min-width: 768px) {
+    gap: 12px;
+  }
+}
+
+.igot-nav__theme-btn {
+  color: $nav-text !important;
+
+  &:hover {
+    color: $nav-active !important;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--border-focus, $accent);
+    outline-offset: 2px;
+  }
+}
+
+.active-theme {
+  background-color: rgba(255, 255, 255, 0.08);
+  font-weight: 600;
+}
+
+.igot-nav__classic-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  background: transparent;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 12.5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s, color 0.15s;
+  white-space: nowrap;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.6);
+    color: #fff;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--border-focus, $accent);
+    outline-offset: 2px;
+  }
+}
+
+.igot-nav__classic-label {
+  @media (max-width: 575px) {
+    display: none;
+  }
+}
